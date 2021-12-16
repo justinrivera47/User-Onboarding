@@ -1,11 +1,11 @@
 import React from 'react'
 
 const Form = (props) => {
-  const { onChange, submit } = props;
-  const { username, email, password, checked } = props.values;
+  const { change, submit, errors } = props;
+  const { username, email, password, tos } = props.values;
 
   const onChange = (e) => {
-    const {name, value, checked, type } = e.target;
+    const { name, value, checked, type } = e.target;
     const newValue = type === 'checkbox' ? checked : value;
     change(name, newValue);
   }
@@ -18,39 +18,43 @@ const Form = (props) => {
   return (
     <div>
       <h1>My Cool Form </h1>
+      <p>{errors.username}</p>
+      <p>{errors.password}</p>
+      <p>{errors.email}</p>
+      <p>{errors.tos}</p>
       <form onSubmit={onSubmit} >
-        <lable>Name:
+        <label>Name:
           <input 
           type="text"
           name="username"
           value={username}
           onChange={onChange}
           />
-        </lable>
-        <lable>E-mail:
+        </label>
+        <label>E-mail:
           <input 
           type="email"
           name="email"
           value={email}
           onChange={onChange}
           />
-        </lable>
-        <lable>Password:
+        </label>
+        <label>Password:
           <input 
           type="password"
           name="password"
           value={password}
           onChange={onChange}
           />
-        </lable>
-        <lable>Terms of Service:
+        </label>
+        <label>Terms of Service:
           <input 
           type="checkbox"
           name="tos"
-          checked={checked}
+          checked={tos}
           onChange={onChange}
           />
-        </lable>
+        </label>
           <input type='submit' value='Create a Friend!' />
       </form>
     </div>
