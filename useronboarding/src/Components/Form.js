@@ -1,6 +1,10 @@
 import React from 'react'
 
-const Form = () => {
+const Form = (props) => {
+  const { onChange, submit } = props;
+  const { username, email, password, tos, } = props.values;
+
+
   return (
     <div>
       <h1>My Cool Form </h1>
